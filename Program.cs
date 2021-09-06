@@ -21,21 +21,33 @@ namespace dojo_anonymizer
 
             // Version sans Linq
             /* 
-             * for (int i = 1; i < lines.length; i++) {
+             * for (int i = 1; i < lines.Length; i++) {
              *  line = lines[i];
              *  
             */
 
             foreach (String line in lines.Skip(1))
             {
-                Console.WriteLine("AAAAA - " + line.Split(',')[1]);
+                string[] columns = line.Split(',');
+
+                Console.Write("AAAAA");
+                for (int j = 1; j < columns.Length; j++)
+                {
+                    Console.Write(" - " + columns[j]);
+                }
+                Console.WriteLine("");//retour à la ligne !
             }
-            Console.ReadLine();//Pour afficher le résultat sans fermer la console
         }
 
         static void Main(string[] args)
         {
             readCsv("../../staff.csv");// par rapport au dossier bin/Debug
+
+            Console.WriteLine("");//saut de ligne pour la visibilité
+
+            readCsv("../../students.csv");// par rapport au dossier bin/Debug
+
+            Console.ReadLine();//Pour afficher le résultat sans fermer la console
         }
     }
 }
